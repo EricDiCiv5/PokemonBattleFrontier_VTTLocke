@@ -1,1 +1,31 @@
-<p>attack-form works!</p>
+<mat-card class="contact-card">
+    <mat-card-header id="contact">
+      <mat-card-title class="h4"></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form >
+        <mat-form-field appearance="standard">
+          <label></label>
+          <input type="text" matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <label></label>
+          <input type="text" matInput formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <label></label>
+          <input type="email" matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <label></label>
+          <input type="text" matInput formControlName="msgSubject">
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <label></label>
+          <textarea matInput formControlName="descrip"></textarea>
+        </mat-form-field>
+        <re-captcha class="re-captcha" formControlName="recaptcha" siteKey="6Lf2lRciAAAAAC6tIMOl7kPrHfv7yUdAGs0VCz_K"></re-captcha>
+        <button type="submit" mat-raised-button >Send to my mail</button>
+      </form>
+    </mat-card-content>
+  </mat-card>

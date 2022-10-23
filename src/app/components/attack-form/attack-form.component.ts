@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Trainer } from 'src/app/models/trainer';
 import { ObtainDataService } from 'src/app/services/obtain-data.service';
+import { TranslateService } from '@ngx-translate/core/public_api';
 
 @Component({
   selector: 'attack-form',
@@ -11,18 +12,13 @@ export class AttackFormComponent implements OnInit {
 
   trainers: Trainer[] = [];
 
-  constructor(private obtainData: ObtainDataService) {
-
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang('en');
+    translate.use('en');
   }
 
   ngOnInit(): void {
-    this.obtainData.getTrainers().subscribe((entrenadores) => {
-      this.trainers = entrenadores;
-    })
-
-    this.obtainData.getTrainers2().subscribe((entrenadores2) => {
-      this.trainers = entrenadores2;
-    })
+    
   }
 
 }
