@@ -10,6 +10,7 @@ import { AttackFormComponent } from './components/attack-form/attack-form.compon
 import { HttpClientModule } from '@angular/common/http';
 
 import { AngularMaterialModule } from './modules/angular-material.module';
+import { NpmLibrariesModule } from './modules/npm-libraries.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AngularMaterialModule } from './modules/angular-material.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    NpmLibrariesModule
   ],
   providers: [],
   bootstrap: [FullPageComponent]
