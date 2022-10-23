@@ -9,7 +9,7 @@ import { FullPageComponent } from './components/full-page/full-page.component';
 import { AttackFormComponent } from './components/attack-form/attack-form.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
+import { AngularMaterialModule } from './modules/angular-material.module';
 
 @NgModule({
   declarations: [
