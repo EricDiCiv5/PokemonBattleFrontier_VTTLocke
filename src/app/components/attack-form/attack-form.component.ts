@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Trainer } from 'src/app/models/trainer';
 import { ObtainDataService } from 'src/app/services/obtain-data.service';
+import { TranslateService } from '@ngx-translate/core/public_api';
+import { Pokemon } from 'src/app/models/pokemon';
 
 @Component({
   selector: 'attack-form',
@@ -10,19 +12,29 @@ import { ObtainDataService } from 'src/app/services/obtain-data.service';
 export class AttackFormComponent implements OnInit {
 
   trainers: Trainer[] = [];
+  trainer: Trainer;
+  pokemons: Pokemon[] = [];
+  pokemon: Pokemon;
 
-  constructor(private obtainData: ObtainDataService) {
-
+  constructor(private translate: TranslateService, private obtainData: ObtainDataService) {
+    translate.setDefaultLang('en');
+    translate.use('en');
+    this.trainer = {
+      fullName: '',
+      pokemons: [],
+    }
+    this.pokemon = {
+      fullName: '',
+      nature: '',
+      attacks: [],
+    }
   }
 
   ngOnInit(): void {
-    this.obtainData.getTrainers().subscribe(entrenadores => {
+    this.obtainData.getTrainers().subscribe( entrenadores => {
       this.trainers = entrenadores;
     })
 
-    this.obtainData.getTrainers2().subscribe((entrenadores2) => {
-      this.trainers = entrenadores2;
-    })
   }
 
 }

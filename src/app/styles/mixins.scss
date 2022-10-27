@@ -1,0 +1,80 @@
+/*Creación del mapa de puntos de corte*/
+$breakpoints: (
+  androidLargeVert: 420px,
+  phone-small: 425px,
+  phone: 768px,
+  androidLargeHorit: 800px,
+  tab-port: 1024px,
+  tab-land: 1200px,
+  tab-desktop: 1600px
+);
+
+/* Mixin para hacer responsive */
+@mixin allmedias($breakpoint) {
+  @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+/*Para usarla en los componentes, llamarlo como
+@include allmedias(nombre de la propiedad de $breakpoints) */
+
+/* Mixin de transform para que este en todos los navegadores */
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  -o-transform: $transforms;
+  transform: $transforms;
+}
+
+/* Mixin para agrupar todas las propiedades de flexbox */
+@mixin flex($disp, $direct, $corte, $justif, $alIt, $alCont) {
+  display: $disp;
+  flex-flow: $direct $corte;
+  justify-content: $justif;
+  align-items: $alIt;
+  align-content: $alCont;
+}
+
+/* Mixin para agrupar todas las propiedades de grid */
+@mixin grid($dis,
+  $filas,
+  $columnas,
+  $brechaFila,
+  $brechaCol,
+  $justIt,
+  $justCont,
+  $aliCont) {
+  display: $dis;
+  grid-template: repeat($filas, auto) / repeat($columnas, auto);
+  grid-gap: $brechaFila $brechaCol;
+  justify-items: $justIt;
+  justify-content: $justCont;
+  $align-content: $aliCont;
+}
+
+/* Mixing Box Sizing */
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model; // Safari <= 5
+    -moz-box-sizing: $box-model; // Firefox <= 19
+    -o-box-sizing: $box-model;
+    box-sizing: $box-model;
+}
+
+@mixin sectionTitles($fontFam,
+  $fontSize,
+  $textAlign,
+  $wid,
+  $marg,
+  $borderBot,
+  $z_Idx
+  ) {
+  font-family: $fontFam;
+  font-size: $fontSize;
+  text-align: $textAlign;
+  width: $wid;
+  margin: $marg;
+  border-bottom: $borderBot;
+  z-index: $z_Idx;
+}
