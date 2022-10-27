@@ -1,1 +1,30 @@
-<p>attack-form works!</p>
+<mat-card class="contact-card">
+    <mat-card-header id="contact">
+      <mat-card-title class="h4"></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form >
+        <mat-form-field appearance="standard">
+          <mat-label>Selecciona un entrenador</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let trainer of trainers" [value]="trainer.fullName">
+              {{trainer.fullName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <mat-label>Selecciona un pokemon</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let pokemon of pokemons" [value]="pokemon.fullName">
+              {{pokemon.fullName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <mat-checkbox>Click if life is under 50%</mat-checkbox>
+        </mat-form-field>
+        <re-captcha class="re-captcha" formControlName="recaptcha" siteKey="6Lf2lRciAAAAAC6tIMOl7kPrHfv7yUdAGs0VCz_K"></re-captcha>
+        <button type="submit" mat-raised-button >Send to my mail</button>
+      </form>
+    </mat-card-content>
+  </mat-card>

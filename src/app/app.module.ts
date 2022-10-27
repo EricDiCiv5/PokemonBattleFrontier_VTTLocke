@@ -9,7 +9,8 @@ import { FullPageComponent } from './components/full-page/full-page.component';
 import { AttackFormComponent } from './components/attack-form/attack-form.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
+import { AngularMaterialModule } from './modules/angular-material.module';
+import { NpmLibrariesModule } from './modules/npm-libraries.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    NpmLibrariesModule
   ],
   providers: [],
   bootstrap: [FullPageComponent]
