@@ -1,3 +1,6 @@
 export interface Attack {
-    name: string;
+    attack1: string;
+    attack2: string;
+    attack3: string;
+    attack4: string;
 }
