@@ -16,7 +16,7 @@ export class AttackFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.obtainData.getTrainers().subscribe((entrenadores) => {
+    this.obtainData.getTrainers().subscribe(entrenadores => {
       this.trainers = entrenadores;
     })
 
