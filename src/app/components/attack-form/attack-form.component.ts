@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Trainer } from 'src/app/models/trainer';
 import { ObtainDataService } from 'src/app/services/obtain-data.service';
-import { TranslateService } from '@ngx-translate/core/public_api';
+import { TranslateService } from '@ngx-translate/core';
 import { Pokemon } from 'src/app/models/pokemon';
 
 @Component({

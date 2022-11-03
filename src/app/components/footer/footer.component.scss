@@ -1,6 +1,17 @@
 @import '../../styles/global.scss';
 
-* {
-    padding: 3%;
-    background: $footerLinearGrad; 
+footer {
+    padding: 1.5%;
+    background: $footerLinearGrad;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    p {
+        flex: 1;
+        position:relative;
+        top: 2vh;
+        font-family: $secondaryFont;
+        font-size: 1vw;
+    }
 }

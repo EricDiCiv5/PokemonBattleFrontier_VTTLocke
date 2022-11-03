@@ -1,6 +1,25 @@
 @import '../../styles/global.scss';
 
-* {
-    padding: 3%;
-    background: $headerLinearGrad; 
+header {
+    padding: 1.5%;
+    background: $headerLinearGrad;
+    figure {
+        display:block;
+        margin: 0 auto;
+        width: 70%;
+        &:last-of-type{
+            margin: 3.5vh auto;
+            width: 20%;
+        }
+        img{
+            margin: auto;
+            width: 100%;
+        }
+    }
+    h1 {
+        margin: 3vh auto;
+        text-align:center;
+        font-family: $secondaryFont;
+        font-size: 2vw;
+    }
 }
