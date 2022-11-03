@@ -8,10 +8,23 @@ footer {
     justify-content: flex-start;
     align-items: flex-end;
     p {
-        flex: 1;
+        flex: 7;
         position:relative;
         top: 2vh;
         font-family: $secondaryFont;
         font-size: 1vw;
+        font-weight: bold;
+    }
+    article {
+        flex: 1;
+        display:flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        position:relative;
+        top: 1vh;
+        color: #f0f0f0;
+        i{
+            font-size: 1.5vw;
+        }
     }
 }

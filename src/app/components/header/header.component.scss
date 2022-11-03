@@ -7,8 +7,11 @@ header {
         display:block;
         margin: 0 auto;
         width: 70%;
+        &:first-of-type{
+            margin-bottom: 8vh;
+        }
         &:last-of-type{
-            margin: 3.5vh auto;
+            margin: 1.5vh auto;
             width: 20%;
         }
         img{
