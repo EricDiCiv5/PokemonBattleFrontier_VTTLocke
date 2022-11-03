@@ -35,6 +35,10 @@ export class AttackFormComponent implements OnInit {
       this.trainers = entrenadores;
     })
 
+    this.obtainData.getTrainers2().subscribe( entrenadores => {
+      this.trainers = entrenadores;
+    })
+
   }
 
 }
