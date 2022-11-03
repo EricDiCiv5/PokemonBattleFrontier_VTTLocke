@@ -22,9 +22,28 @@ footer {
         justify-content: space-around;
         position:relative;
         top: 1vh;
-        color: #f0f0f0;
-        i{
-            font-size: 1.5vw;
+        a{
+            color: #f0f0f0;
+            transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+            &:first-of-type{
+                &:hover{
+                    color: #6441a5;
+                }
+            }
+            &:nth-of-type(2){
+                &:hover{
+                    color: #000;
+                }
+            }
+            &:last-of-type{
+                &:hover{
+                    color: #0077b5;
+                }
+            }
+            i {
+                font-size: 1.5vw;
+                
+            }
         }
     }
 }

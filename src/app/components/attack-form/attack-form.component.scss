@@ -3,7 +3,7 @@
 .attack-form{
     background: $attackFormBkgColor;
     .mat-card-header{
-        padding: 5%;
+        padding: 3%;
         text-align: center;
         margin:auto;
         .mat-card-title{
@@ -11,8 +11,8 @@
             color: #b9a3a3;
             text-align: center;
             position: relative;
-            top: -5vh;
-            left: 28.5vw;
+            top: -4vh;
+            left: 30vw;
             font-size: 2vw;
             font-weight: bold; 
         }
@@ -23,12 +23,43 @@
         width: 33%;
         margin: 0 auto;
         position:relative;
-        top: -10vh;
+        top: -7vh;
         #form-attacks{
             display:flex;
             flex-flow: column wrap;
             justify-content: center;
-            align-items: center; 
+            align-items: center;
+            .mat-form-field{
+                width: 66%;
+                .mat-label{
+                    font-size: .9vw;
+                    font-family: $primaryFont;
+                }
+                .mat-select{
+                    border: 1px solid #6441a5;
+                    border-radius: 20px;
+                    width: 100%;
+                }
+                .mat-checkbox{
+                    font-family: $secondaryFont;
+                    font-size: 1.33vw;
+                }
+            }
+            .mat-raised-button{
+                background-color: #b9a3a3;
+                color:#6441a5;
+                box-shadow: 0px 0px 5px #000;
+                margin-bottom: 3.5vh;
+                transition: .5s all ease-out;
+                &:hover {
+                    padding: 1.5% 6%;
+                    border-radius: 33px;
+                    font-size: 1.33vw;
+                    background-color: #ee1515;
+                    color:#000;
+                    box-shadow: 0px 0px 5px #f0f0f0;
+                }
+            } 
         }
     }
 }
