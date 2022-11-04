@@ -19,10 +19,34 @@ header {
             width: 100%;
         }
     }
-    h1 {
-        margin: 3vh auto;
-        text-align:center;
-        font-family: $secondaryFont;
-        font-size: 2vw;
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        figure {
+            width: 75%;
+            &:first-of-type{
+                margin-top: 2vh;
+                margin-bottom: 5vh;
+            }
+            &:last-of-type{
+                width: 25%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    header {
+        figure {
+            width: 80%;
+            &:first-of-type{
+                margin-top: 2vh;
+                margin-bottom: 5vh;
+            }
+            &:last-of-type{
+                width: 30%;
+            }
+        }
     }
 }
