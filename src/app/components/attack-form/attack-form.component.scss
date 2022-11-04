@@ -63,3 +63,82 @@
         }
     }
 }
+
+@media screen and (max-width: 800px) {
+    .attack-form{
+        .mat-card-header{
+            padding: 3%;
+            .mat-card-title{
+                top: -2vh;
+                left: 22vw;
+                font-size: 3vw;
+            }
+        }
+        .mat-card-content{
+            width: 33%;
+            margin: 0 auto;
+            position:relative;
+            top: -3.5vh;
+            #form-attacks{
+                .mat-form-field{
+                    width: 75%;
+                    .mat-label{
+                        font-size: 1.1vw;
+                        font-family: $primaryFont;
+                    }
+                    .mat-select{
+                        width: 100%;
+                    }
+                    .mat-checkbox{
+                        font-family: $secondaryFont;
+                        font-size: 1.5vw;
+                    }
+                }
+                .mat-raised-button{
+                    margin-bottom: 4vh;
+                    &:hover {
+                        padding: 2% 7%;
+                        font-size: 1.75vw;
+                    }
+                } 
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .attack-form{
+        .mat-card-header{
+            padding: 4%;
+            .mat-card-title{
+                top: -1vh;
+                left: 11.5vw;
+                font-size: 4vw;
+            }
+        }
+        .mat-card-content{
+            width: 60%;
+            position:relative;
+            top: -2vh;
+            #form-attacks{
+                .mat-form-field{
+                    .mat-label{
+                        font-size: 1.5vw;
+                        font-family: $primaryFont;
+                    }
+                    .mat-checkbox{
+                        font-family: $secondaryFont;
+                        font-size: 2.5vw;
+                    }
+                }
+                .mat-raised-button{
+                    margin-bottom: 4vh;
+                    &:hover {
+                        padding: 2% 7%;
+                        font-size: 3.5vw;
+                    }
+                } 
+            }
+        }
+    }
+}
