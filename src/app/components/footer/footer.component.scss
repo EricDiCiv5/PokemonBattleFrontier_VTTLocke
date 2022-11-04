@@ -49,9 +49,38 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
-    
+    footer {
+        padding: 2%;
+        p {
+            flex: 6;
+            font-size: 1.5vw;
+        }
+        article {
+            position:relative;
+            top: .2vh;
+            a{
+                i {
+                    font-size: 1.8vw;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 420px) {
-    
+    footer {
+        p {
+            flex: 4;
+            font-size: 2.2vw;
+        }
+        article {
+            position:relative;
+            top: .05vh;
+            a{
+                i {
+                    font-size: 3vw;
+                }
+            }
+        }
+    }
 }
