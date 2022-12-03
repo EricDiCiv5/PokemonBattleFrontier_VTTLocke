@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,14 +20,16 @@ import { NpmLibrariesModule } from './modules/npm-libraries.module';
     HeaderComponent,
     FooterComponent,
     FullPageComponent,
-    AttackFormComponent
+    AttackFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     AngularMaterialModule,
-    NpmLibrariesModule
+    NpmLibrariesModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [FullPageComponent]

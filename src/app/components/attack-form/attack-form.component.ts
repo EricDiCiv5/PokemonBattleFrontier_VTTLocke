@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Trainer } from 'src/app/models/trainer';
 import { ObtainDataService } from 'src/app/services/obtain-data.service';
-import { TranslateService } from '@ngx-translate/core';
 import { Pokemon } from 'src/app/models/pokemon';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AttacksService } from 'src/app/services/attack-functions.service';
 
 @Component({
   selector: 'attack-form',
@@ -11,34 +12,37 @@ import { Pokemon } from 'src/app/models/pokemon';
 })
 export class AttackFormComponent implements OnInit {
 
-  trainers: Trainer[] = [];
-  trainer: Trainer;
-  pokemons: Pokemon[] = [];
-  pokemon: Pokemon;
+  public attacksForm!: FormGroup;
 
-  constructor(private translate: TranslateService, private obtainData: ObtainDataService) {
-    translate.setDefaultLang('en');
-    translate.use('en');
-    this.trainer = {
-      fullName: '',
-      pokemons: [],
-    }
-    this.pokemon = {
-      fullName: '',
-      nature: '',
-      attacks: [],
-    }
+  trainers: Trainer[] = [];
+  trainerName: string = '';
+  pokemons: Pokemon[] = [];
+  pokemonName: string = '';
+  rage: boolean = false;
+
+  constructor( private obtainData: ObtainDataService, private attackService: AttacksService) {
+
   }
 
   ngOnInit(): void {
-    this.obtainData.getTrainers().subscribe( entrenadores => {
-      this.trainers = entrenadores;
+    this.obtainData.getTrainers().subscribe( {
+      next: (entrenadores: Trainer[]) => this.trainers = entrenadores,
+      error: (err: Error) => console.log('Hubo un error en el observable '),
+      complete: () => console.log('Observer got a complete notification'), 
+    });
+
+    this.attacksForm = new FormGroup({
+      trainerName: new FormControl('', [Validators.required]),
+      pokemonName: new FormControl('', [Validators.required]),
+      lifeUnderFifty: new FormControl('', [Validators.required]),
     })
 
-    this.obtainData.getTrainers2().subscribe( entrenadores => {
-      this.trainers = entrenadores;
-    })
+  }
 
+  generateRandomAttack(){
+    this.trainerName = this.attacksForm.controls['trainerName'].value;
+    this.pokemonName = this.attacksForm.controls['pokemonName'].value;
+    this.attackService.selectAttack(this.trainers, this.trainerName, this.pokemonName, this.rage );
   }
 
 }

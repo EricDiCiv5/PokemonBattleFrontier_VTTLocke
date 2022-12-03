@@ -1,31 +1,71 @@
 import { Injectable } from '@angular/core';
+import { Trainer } from '../models/trainer';
+import { NatureDictionaries } from '../models/natureDicts';
 import { ObtainDataService } from './obtain-data.service';
+import { Pokemon } from '../models/pokemon';
+import { Attack } from '../models/attack';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AttacksService {
 
-  constructor(private obtainData: ObtainDataService) { }
+  public natureDicts: NatureDictionaries[];
 
-     SelectAttack (oriJSON: any, chosedTrainer: string, chosedPokemon: string, rage: boolean)
-  {
-      var trainer = oriJSON.trainers.find((trainer: string) => trainer.name == chosedTrainer);
-      var pokemon = trainer.pokemon.find((pkm: string) => pkm.name == chosedPokemon);
+  public oriJSON: Trainer;
 
-      var natureConfig = NatureDictionaries.find((nature: string) => nature.name == pokemon.nature);
+  public pkmn: Pokemon;
+
+  public attcks: Attack;
+
+  constructor(private obtainData: ObtainDataService) {
+    this.natureDicts = [
+        {
+        name: '',
+        basicAttkVal: 0.00,
+        basicDefVal: 0.00,
+        basicSuppVal: 0.00,
+        rageAttVal: 0.00,
+        rageDefVal: 0.00,
+        rageSuppVal: 0.00,
+        }
+    ]
+
+    this.oriJSON = {
+        fullName: '',
+        pokemons: [],
+    }
+
+    this.pkmn = {
+        fullName: '',
+        nature: '',
+        attacks: [],
+    }
+
+    this.attcks = {
+        name: '',
+        type: '',
+        style: '',
+    }
+  }
+
+  selectAttack(oriJSON: any, chosedTrainer: string, chosedPokemon: string, rage: boolean) {
+      var trainer = oriJSON.trainers.find((trainer: Trainer) => trainer.fullName == chosedTrainer);
+      var pokemon = trainer.pokemon.find((pkm: Pokemon) => pkm.fullName == chosedPokemon);
+
+      var natureConfig = this.natureDicts.find((nature: NatureDictionaries) => nature.name == pokemon.nature);
       
       if(rage){
           var natureValues = 
           {
-          "attackValue": natureConfig.rageAttackValue, 
-          "defenseValue": natureConfig. rageDefenseValue,
+            "attackValue": natureConfig?.rageAttVal, 
+            "defenseValue": natureConfig?.rageDefVal,
           }
       }else{
           var natureValues = 
           {
-          "attackValue": natureConfig.basicAttackValue, 
-          "defenseValue": natureConfig. basicDefenseValue,
+            "attackValue": natureConfig?.basicAttkVal, 
+            "defenseValue": natureConfig?.basicDefVal,
           }
       }
       
@@ -41,9 +81,9 @@ export class AttacksService {
   }
 
 
-   getRandomAttack(pokemon: string, styleAttack: string){
+   getRandomAttack(pokemon: Pokemon, styleAttack: string){
       var attackList = pokemon.attacks;
-      if(pokemon.attacks.any(atk => atk.style == styleAttack)){        
+      if(pokemon.attacks.some((atk: any) => atk.style == styleAttack)){        
           attackList = pokemon.attacks.filter(atk => atk.style == styleAttack);
           var index = Math.floor(Math.random() * attackList.length-1);
       }else{
