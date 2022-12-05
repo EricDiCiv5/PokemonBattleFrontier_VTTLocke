@@ -7,7 +7,7 @@
       <mat-form-field appearance="standard">
         <mat-label>Selecciona un entrenador</mat-label>
         <mat-select matNativeControl formControlName="trainerName" >
-          <mat-option matInput *ngFor="let trainer of trainers" [value]="trainer.fullName">
+          <mat-option *ngFor="let trainer of trainers" [value]="trainer.fullName">
             {{trainer.fullName}}
           </mat-option>
         </mat-select>
@@ -15,7 +15,7 @@
       <mat-form-field appearance="standard">
         <mat-label>Selecciona un pokemon</mat-label>
         <mat-select matNativeControl formControlName="pokemonName">
-          <mat-option matInput *ngFor="let pokemon of pokemons" [value]="pokemon.fullName">
+          <mat-option *ngFor="let pokemon of pokemons" [value]="pokemon.fullName">
             {{pokemon.fullName}}
           </mat-option>
         </mat-select>

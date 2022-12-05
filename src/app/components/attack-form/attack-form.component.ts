@@ -14,19 +14,30 @@ export class AttackFormComponent implements OnInit {
 
   public attacksForm!: FormGroup;
 
-  trainers: Trainer[] = [];
+  trainers: Trainer[];
   trainerName: string = '';
-  pokemons: Pokemon[] = [];
   pokemonName: string = '';
+  pokemons: Pokemon[] = [];
   rage: boolean = false;
 
   constructor( private obtainData: ObtainDataService, private attackService: AttacksService) {
-
+    this.trainers = [{
+      fullName: '',
+      pokemons: [],
+    }]
   }
 
+
   ngOnInit(): void {
+    
     this.obtainData.getTrainers().subscribe( {
       next: (entrenadores: Trainer[]) => this.trainers = entrenadores,
+      error: (err: Error) => console.log('Hubo un error en el observable '),
+      complete: () => console.log('Observer got a complete notification'), 
+    });
+
+    this.obtainData.getPokemonsOfATrainer(this.trainerName).subscribe( {
+      next: (pokemones: Pokemon[]) => this.pokemons = pokemones,
       error: (err: Error) => console.log('Hubo un error en el observable '),
       complete: () => console.log('Observer got a complete notification'), 
     });
