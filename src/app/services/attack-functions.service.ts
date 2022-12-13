@@ -12,8 +12,6 @@ export class AttacksService {
 
   public natureDicts: NatureDictionaries[];
 
-  public oriJSON: Trainer;
-
   public pkmn: Pokemon;
 
   public attcks: Attack;
@@ -31,13 +29,8 @@ export class AttacksService {
         }
     ]
 
-    this.oriJSON = {
-        fullName: '',
-        pokemons: [],
-    }
-
     this.pkmn = {
-        fullName: '',
+        name: '',
         nature: '',
         attacks: [],
     }
@@ -47,49 +40,67 @@ export class AttacksService {
         type: '',
         style: '',
     }
+
   }
 
-  selectAttack(oriJSON: any, chosedTrainer: string, chosedPokemon: string, rage: boolean) {
-      var trainer = oriJSON.trainers.find((trainer: Trainer) => trainer.fullName == chosedTrainer);
-      var pokemon = trainer.pokemon.find((pkm: Pokemon) => pkm.fullName == chosedPokemon);
+  selectAttack(trainers: Trainer[], chosenTrainer: string, chosenPokemon: string, rage: boolean) {
 
-      var natureConfig = this.natureDicts.find((nature: NatureDictionaries) => nature.name == pokemon.nature);
+    if (!trainers || trainers.length === 0) return '';
+  
+    const trainer = trainers.find(trainer => trainer.fullName === chosenTrainer);
       
-      if(rage){
-          var natureValues = 
-          {
-            "attackValue": natureConfig?.rageAttVal, 
-            "defenseValue": natureConfig?.rageDefVal,
-          }
-      }else{
-          var natureValues = 
-          {
-            "attackValue": natureConfig?.basicAttkVal, 
-            "defenseValue": natureConfig?.basicDefVal,
-          }
-      }
-      
-      var attackStyle = this.getRandomStyleAttack(natureValues);
-      return this.getRandomAttack(pokemon, attackStyle);
+    if(!trainer) return '';
+  
+    const pokemon = trainer.pokemons.find(pkm => pkm.name === chosenPokemon);
+  
+    if(!pokemon) return '';
+  
+    const natureConfig = this.natureDicts.find(nature => nature.name === pokemon.nature);
+  
+    if (!natureConfig) return '';
+  
+    let natureValues;
+    if (rage) {
+      natureValues = {
+        attackValue: natureConfig.rageAttVal,
+        defenseValue: natureConfig.rageDefVal,
+      };
+    } else {
+      natureValues = {
+        attackValue: natureConfig.basicAttkVal,
+        defenseValue: natureConfig.basicDefVal,
+      };
+    }
+  
+    const attackStyle = this.getRandomStyleAttack(natureValues);
+
+    return this.getRandomAttack(pokemon, attackStyle);
   }
+  
 
    getRandomStyleAttack(natureValues: any){
-      var num=Math.random();
-      if(num < natureValues.attackValue) return "Attack"; 
-      else if(num < (natureValues.attackValue + natureValues.defenseValue)) return "Defense"; 
-      else return "Support";
+      let num=Math.random();
+      let styleAttack;
+      if(num < natureValues.attackValue) styleAttack = "Attack"; 
+      else if(num < (natureValues.attackValue + natureValues.defenseValue)) styleAttack = "Defense"; 
+      else styleAttack = "Support";
+
+      console.log(styleAttack);
+
+      return styleAttack;
   }
 
 
    getRandomAttack(pokemon: Pokemon, styleAttack: string){
-      var attackList = pokemon.attacks;
-      if(pokemon.attacks.some((atk: any) => atk.style == styleAttack)){        
-          attackList = pokemon.attacks.filter(atk => atk.style == styleAttack);
-          var index = Math.floor(Math.random() * attackList.length-1);
-      }else{
-          var index = Math.floor(Math.random() * attackList.length-1);
-      }
+      let attackList = pokemon.attacks;
 
-      return  attackList[index];
+      if (attackList.length === 0) return '';
+
+      const attack = attackList.find(atk => atk.style === styleAttack);
+
+      if (attack) return attack.name;
+      else return attackList[Math.floor(Math.random() * attackList.length)].name;
+
   }
+
 }

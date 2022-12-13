@@ -1,7 +1,7 @@
 import { Attack } from "./attack";
 
 export interface Pokemon {
-    fullName: string;
+    name: string;
     nature: string;
     attacks: Attack[];
 }

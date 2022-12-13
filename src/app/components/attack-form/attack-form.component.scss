@@ -67,6 +67,25 @@
             }
         }
     }
+    .randomAttack {
+        background-color: rgba(235, 235, 235, 0.9);
+        border-radius: 25px;
+        border: 4px ridge #303030;
+        width: 50%;
+        margin: 0 auto;
+        text-align:center;
+        h2{
+            font-family: 'Julius Sans One';
+            color: #ee1515;
+            font-size: 1.5vw;
+            font-weight: bold;
+        }
+        p {
+            font-family: 'Rajdhani';
+            color: #303030;
+            font-size: 1.33vw;
+        }
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -108,6 +127,20 @@
                 } 
             }
         }
+        .randomAttack {
+            width: 40%;
+            h2{
+                font-family: 'Julius Sans One';
+                color: #ee1515;
+                font-size: 2vw;
+                font-weight: bold;
+            }
+            p {
+                font-family: 'Rajdhani';
+                color: #303030;
+                font-size: 1.83vw;
+            }
+        }
     }
 }
 
@@ -143,6 +176,20 @@
                         font-size: 3.5vw;
                     }
                 } 
+            }
+        }
+        .randomAttack {
+            width: 60%;
+            h2{
+                font-family: 'Julius Sans One';
+                color: #ee1515;
+                font-size: 3.5vw;
+                font-weight: bold;
+            }
+            p {
+                font-family: 'Rajdhani';
+                color: #303030;
+                font-size: 3.33vw;
             }
         }
     }
